@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= @event.name %></h1>
+    <p class="lead">
+    <% if @event.price === 0.0%>
+              <p class="lead"><strong> Entrada Libre </strong></p>
+            <%else%>
+              <p class="lead"> Precio: $<%= @event.price %> </p>
+            <%end%>
+     El <%= @event.start_date %> desde las <%= @event.start_time.strftime("%H:%M")%>  hasta las <%= @event.end_time.strftime("%H:%M")%>
+    
+    </p>
+    <%= link_to  "Regresar", root_path %> -
+    <% if signed_in?%>
+        <%= link_to "Editar evento", edit_event_path(@event) %> - 
+        <%= link_to "Eliminar evento", @event, method: :delete, data:{confirm: '¿Estás seguro de eliminar este evento?'} %>
+    <%end%>
+ </div>
+</div>
+<div class="container">
+<p> <%= @event.description %> </P>
+</div>
+<div class="container">
+    <div class="list-group">
+        <li class="list-group-item"><strong>Numero de contacto: </strong> <%= @event.event_phone %></li>
+        <li class="list-group-item"><strong>Sitio web: </strong><%= @event.website %></li>
+        <br>
+    </div>
+    <br>
+</div>
+
+
+
+
+

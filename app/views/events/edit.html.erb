@@ -1,0 +1,11 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Editar este evento</h1>
+    <p class="lead">Por favor completa la información del evento.</p>
+    <%= link_to  "Regresar", root_path %>
+ </div>
+</div>
+<div class="container">
+    <%= render "event_form", locals: {b_text: "Actualizar Evento"} %>
+    <br>
+</div>

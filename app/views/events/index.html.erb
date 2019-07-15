@@ -1,0 +1,51 @@
+
+<div class="jumbotron">
+<h1 class="display-4"> Calendario Bogotá Gratis </h1>
+<h4 class="lead"> ¿Sin plan en Bogotá? Encuentra aquí la recopilación diaria de los mejores eventos culturales gratuitos en Bogotá. ¡Navega nuestro calendario! </h4>
+<hr class="my-4">
+<p><strong>¿Tienes un evento gratis y que quieres aparezca en nuestro calendario? Regístralo. </strong> 
+<%= button_to "Registrar Evento", new_event_path, method: :get, :class => "btn btn-primary" %></p> 
+</div>
+
+<div class="container">
+  <div class="row">
+    
+      <% @events.each do |event| %>
+        <div class=col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to event.name, event_path(event) %><h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%= event.start_date %> - a las <%= event.start_time.strftime("%H:%M") %> </h5>
+            <h5><%= event.venue_id %> </h5>
+            <% if event.price === 0.0%>
+              <h6 class="card-subtitle"> Entrada Libre </h6>
+            <%else%>
+              <h6 class="card-subtitle"> Precio: $<%= event.price %> </h6>
+            <%end%>
+            <hr class="my-2">
+            <% if event.description.length > 250 %>
+              <p class="card-text"><%= truncate(event.description, length: 300) %></p> <%= link_to "Ver más", event_path(event), :class => "card-link" %>
+            <% else%>
+              <p class="card-text"><%= event.description %> </p>
+            <%end%>
+          </div>
+        </div>
+        <br>
+      <% end %>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
