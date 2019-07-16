@@ -5,7 +5,7 @@
     <% if @event.price === 0.0%>
               <p class="lead"><strong> Entrada Libre </strong></p>
             <%else%>
-              <p class="lead"> Precio: $<%= @event.price %> </p>
+              <p class="lead"> Precio: $<%= @event.price.to_i %> </p>
             <%end%>
      El <%= @event.start_date %> desde las <%= @event.start_time.strftime("%H:%M")%>  hasta las <%= @event.end_time.strftime("%H:%M")%>
     

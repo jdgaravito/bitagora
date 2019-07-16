@@ -20,7 +20,7 @@
             <% if event.price === 0.0%>
               <h6 class="card-subtitle"> Entrada Libre </h6>
             <%else%>
-              <h6 class="card-subtitle"> Precio: $<%= event.price %> </h6>
+              <h6 class="card-subtitle"> Precio: $<%= event.price.to_int %> </h6>
             <%end%>
             <hr class="my-2">
             <% if event.description.length > 250 %>
